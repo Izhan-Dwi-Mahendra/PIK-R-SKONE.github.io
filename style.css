@@ -1,0 +1,1023 @@
+/* ==========================================================================
+   PIK-R SKONE | SMK NEGERI 1 DEPOK
+   Modern Warm Aesthetic Stylesheet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties / Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Warm Aesthetic Color Palette */
+  --bg-canvas: #F0E2CD;
+  --bg-canvas-subtle: #E8DAC4;
+  --color-maroon-dark: #451C15;
+  --color-maroon-primary: #51251A;
+  --color-maroon-light: #6A3126;
+  --color-terracotta: #8C4031;
+  --color-gold-accent: #D49058;
+  
+  --card-bg-light: #FBF6EB;
+  --card-border-light: #E7DCcb;
+  --card-pill-bg: #F4EAE0;
+  --card-pill-border: #DBCBB9;
+
+  --text-main: #331A15;
+  --text-muted: #5E4A44;
+  --text-light: #FFFFFF;
+  --text-subtle: #EADACE;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-script: 'Caveat', cursive;
+
+  /* Elevation & Radius */
+  --radius-card: 22px;
+  --radius-inner: 16px;
+  --radius-pill: 9999px;
+  --shadow-sm: 0 4px 14px rgba(69, 28, 21, 0.06);
+  --shadow-md: 0 10px 28px rgba(69, 28, 21, 0.12);
+  --shadow-lg: 0 18px 45px rgba(69, 28, 21, 0.2);
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  position: relative;
+  overflow-x: hidden;
+  padding: 16px 12px 32px 12px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  background: none;
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Organic Background Decorative Elements
+   -------------------------------------------------------------------------- */
+.bg-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(65px);
+  opacity: 0.45;
+}
+
+.blob-1 {
+  width: 320px;
+  height: 320px;
+  background: #DFCDAE;
+  top: -80px;
+  right: -60px;
+}
+
+.blob-2 {
+  width: 360px;
+  height: 360px;
+  background: #E8D3B8;
+  top: 38%;
+  left: -100px;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  background: #D8C3A4;
+  bottom: -60px;
+  right: -50px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Site Wrapper & Layout
+   -------------------------------------------------------------------------- */
+.site-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (min-width: 768px) {
+  .site-wrapper {
+    max-width: 560px;
+    gap: 18px;
+    padding: 20px 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Header / Navbar Card
+   -------------------------------------------------------------------------- */
+.navbar-card {
+  background: var(--color-maroon-dark);
+  background: linear-gradient(135deg, #481F17 0%, #3D1811 100%);
+  border-radius: 18px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--text-subtle);
+  margin-top: 2px;
+}
+
+.menu-toggle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  padding: 6px;
+  border-radius: 8px;
+  transition: var(--transition-fast);
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.menu-bar {
+  width: 22px;
+  height: 2px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  transition: var(--transition-fast);
+}
+
+.menu-bar:nth-child(2) {
+  width: 18px;
+}
+
+.menu-bar:nth-child(3) {
+  width: 22px;
+}
+
+/* --------------------------------------------------------------------------
+   6. Navigation Drawer & Overlay
+   -------------------------------------------------------------------------- */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(35, 15, 10, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-normal);
+}
+
+.nav-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 290px;
+  max-width: 85vw;
+  height: 100%;
+  background: #FFFDF9;
+  z-index: 101;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-drawer.open {
+  right: 0;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--card-border-light);
+  padding-bottom: 16px;
+}
+
+.drawer-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-maroon-dark);
+}
+
+.drawer-subtitle {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.drawer-close {
+  font-size: 26px;
+  line-height: 1;
+  color: var(--color-maroon-dark);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.drawer-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.drawer-nav .nav-link {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: var(--transition-fast);
+}
+
+.drawer-nav .nav-link:hover,
+.drawer-nav .nav-link.active {
+  background: var(--card-pill-bg);
+  color: var(--color-maroon-dark);
+}
+
+.btn-drawer-cta {
+  background: var(--color-maroon-primary) !important;
+  color: #FFFFFF !important;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn-drawer-cta:hover {
+  background: var(--color-maroon-dark) !important;
+}
+
+.drawer-footer {
+  border-top: 1px solid var(--card-border-light);
+  padding-top: 16px;
+  text-align: center;
+}
+
+.drawer-footer-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--color-maroon-light);
+}
+
+.drawer-copyright {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Hero Section Card
+   -------------------------------------------------------------------------- */
+.hero-card {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  height: 250px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(35, 12, 8, 0.45) 0%,
+    rgba(30, 10, 6, 0.35) 40%,
+    rgba(25, 8, 5, 0.72) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.hero-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.05;
+  margin-top: 4px;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  font-family: var(--font-script);
+  font-size: 20px;
+  font-weight: 600;
+  color: #F8F3EC;
+  line-height: 1.15;
+  margin-top: 4px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero-actions {
+  margin-top: auto;
+  margin-bottom: 4px;
+}
+
+.btn-hero-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(35, 14, 10, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: var(--transition-fast);
+}
+
+.btn-hero-action:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.btn-arrow-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  border: 1.5px solid #FFFFFF;
+  background: transparent;
+  padding: 0;
+  transition: var(--transition-fast);
+}
+
+.dot.active {
+  background: #FFFFFF;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   8. Shared Card Section Styles
+   -------------------------------------------------------------------------- */
+.card-section {
+  background: var(--card-bg-light);
+  border: 1px solid var(--card-border-light);
+  border-radius: var(--radius-card);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.section-pill {
+  display: inline-block;
+  background: var(--card-pill-bg);
+  border: 1px solid var(--card-pill-border);
+  color: var(--color-maroon-dark);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-maroon-dark);
+  line-height: 1.1;
+  margin-top: 10px;
+  letter-spacing: -0.01em;
+}
+
+.section-desc {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Tentang Kami Section
+   -------------------------------------------------------------------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 14px;
+  align-items: center;
+}
+
+@media (max-width: 440px) {
+  .about-grid {
+    grid-template-columns: 1fr 130px;
+    gap: 10px;
+  }
+}
+
+.about-action {
+  margin-top: 16px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-maroon-primary);
+  color: #FFFFFF;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(81, 37, 26, 0.25);
+  transition: var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: var(--color-maroon-dark);
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 16px rgba(81, 37, 26, 0.35);
+}
+
+.btn-arrow-right {
+  width: 14px;
+  height: 14px;
+}
+
+.logo-box-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-inner);
+  padding: 10px;
+  box-shadow: 0 6px 18px rgba(69, 28, 21, 0.08);
+  border: 1px solid rgba(231, 220, 203, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-normal);
+}
+
+.logo-box-card:hover {
+  transform: translateY(-2px);
+}
+
+.logo-box-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+/* --------------------------------------------------------------------------
+   10. Our Spirit Banner Card
+   -------------------------------------------------------------------------- */
+.spirit-card {
+  background: linear-gradient(135deg, #703328 0%, #54251B 65%, #461C14 100%);
+  border-radius: var(--radius-card);
+  padding: 22px 24px;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.botanical-decor {
+  position: absolute;
+  right: -10px;
+  bottom: -15px;
+  width: 140px;
+  height: 140px;
+  pointer-events: none;
+  opacity: 0.45;
+  color: #F0CFBD;
+}
+
+.leaf-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.spirit-content {
+  position: relative;
+  z-index: 2;
+}
+
+.spirit-tagline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.spirit-line {
+  width: 24px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.spirit-tag-text {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+}
+
+.spirit-dot {
+  font-size: 8px;
+  color: var(--color-gold-accent);
+}
+
+.spirit-quote {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  margin-left: 34px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 440px) {
+  .spirit-quote {
+    font-size: 22px;
+    margin-left: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. Konselor Sebaya Section Card
+   -------------------------------------------------------------------------- */
+.counselor-card {
+  padding-bottom: 16px;
+}
+
+.counselor-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.counselor-avatar-circle {
+  width: 32px;
+  height: 32px;
+  background: var(--color-maroon-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}
+
+.counselor-avatar-circle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.counselor-grid {
+  display: grid;
+  grid-template-columns: 1fr 165px;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 440px) {
+  .counselor-grid {
+    grid-template-columns: 1fr 140px;
+    gap: 10px;
+  }
+}
+
+.counselor-action {
+  margin-top: 14px;
+}
+
+.btn-counselor-chat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--color-maroon-dark);
+  border: 1.5px solid var(--color-maroon-primary);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.btn-counselor-chat:hover {
+  background: var(--color-maroon-primary);
+  color: #FFFFFF;
+}
+
+.chat-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.counselor-photo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counselor-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+}
+
+.heart-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: #B59B8B;
+}
+
+.divider-line {
+  width: 40px;
+  height: 1px;
+  background: #D9C8B7;
+}
+
+.divider-heart {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   12. Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  text-align: center;
+  padding: 8px 16px 20px;
+}
+
+.footer-motto {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-maroon-primary);
+  letter-spacing: 0.02em;
+}
+
+.footer-info {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   13. Modals & Dialogs
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 12, 8, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-normal);
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  background: #FFFDF9;
+  border: 1px solid var(--card-border-light);
+  border-radius: 20px;
+  max-width: 460px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  padding: 24px;
+  transform: scale(0.92) translateY(10px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.open .modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.modal-badge {
+  display: inline-block;
+  background: var(--card-pill-bg);
+  border: 1px solid var(--card-pill-border);
+  color: var(--color-maroon-dark);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.modal-close {
+  font-size: 28px;
+  line-height: 1;
+  color: var(--color-maroon-dark);
+  padding: 0 6px;
+  border-radius: 6px;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-maroon-dark);
+  line-height: 1.2;
+}
+
+.modal-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+.modal-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--card-pill-bg);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--card-pill-border);
+}
+
+.pillar-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.pillar-text h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-maroon-dark);
+}
+
+.pillar-text p {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.45;
+}
+
+.modal-quote-box {
+  background: linear-gradient(135deg, #FAF1E6 0%, #F5E5D3 100%);
+  border-left: 3px solid var(--color-maroon-primary);
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--color-maroon-dark);
+}
+
+/* --------------------------------------------------------------------------
+   14. Counseling Form Styling
+   -------------------------------------------------------------------------- */
+.counseling-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.form-input {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1.5px solid var(--card-pill-border);
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: var(--text-main);
+  transition: var(--transition-fast);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-maroon-primary);
+  box-shadow: 0 0 0 3px rgba(81, 37, 26, 0.12);
+}
+
+.btn-wa-action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #25D366;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 11px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: var(--transition-fast);
+}
+
+.btn-wa-action:hover {
+  background: #20BA5A;
+  transform: translateY(-1.5px);
+}
