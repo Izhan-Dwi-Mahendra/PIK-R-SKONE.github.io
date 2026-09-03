@@ -1,1 +1,0 @@
-# PIK-R-SKONE
