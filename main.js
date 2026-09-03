@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const formattedText = `Halo Konselor Sebaya PIK-R SKONE (SMK Negeri 1 Depok),%0A%0ASaya ingin konsultasi sebaya:%0A• Nama: ${encodeURIComponent(name)}%0A• Kelas/Jurusan: ${encodeURIComponent(userClass)}%0A• Topik: ${encodeURIComponent(topic)}%0A%0ACerita / Pesan:%0A"${encodeURIComponent(msg)}"%0A%0AMohon bimbingan dan waktu teman-teman konselor. Terima kasih! 🙏`;
 
-      const waNumber = '6281234567890'; // Ganti dengan nomor resmi PIK-R SKONE
+      const waNumber = '6287728525722'; // Ganti dengan nomor resmi PIK-R SKONE
       window.open(`https://wa.me/${waNumber}?text=${formattedText}`, '_blank');
     });
   }
